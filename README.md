@@ -43,7 +43,7 @@
 
 7) Transfer *filepermservice.exe* to windows victim machine:
 
-[![Image of transfer](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/transfer.png)](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`C:\Users\user> get filepermservice.exe`
 
 8) Copy *filepermservice.exe* to C:\Program Files\File Permissions Service:
 

@@ -4,7 +4,7 @@
 
 1) Start PowerShell:
 
-`C:\Users\user> powershell -ep bypass`
+  `C:\Users\user> powershell -ep bypass`
 
 [![Image of get-acl](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/get-acl.png)](#)
 

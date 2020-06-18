@@ -6,9 +6,9 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`C:\Users\user> powershell -ep bypass`
 
-2) Run *PowerUp.ps1*:
+2) Run *PowerUp.ps1* and *Invoke-AllChecks*:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`PS C:\Users\user> . ./PowerUp.ps1`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`PS C:\Users\user> . ./PowerUp.ps1`</br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`PS C:\Users\user> Invoke-AllChecks`
 
 * Note that the 'Everyone' user group has full permissions on the 'filepermservice.exe' service executable.

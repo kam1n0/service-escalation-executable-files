@@ -23,19 +23,19 @@
 
 4) Copy *windows_service.c* from windows machine:
 
-[![Image of ftp](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/ftp.png)](#)
+[![Image of ftp](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/ftp.png)](#)
 
 * Observe *windows_service.c* was received by the FTP server on Kali
 
-[![Image of upload](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/upload.png)](#)
+[![Image of upload](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/upload.png)](#)
 
 5) Edit *windows_service.c* to include the command to add a new user:
 
-[![Image of edit](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/edit.png)](#)
+[![Image of edit](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/edit.png)](#)
 
 6) Compile *windows_service.c*:
 
-[![Image of compile](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/compile.png)](#)
+[![Image of compile](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/compile.png)](#)
 
 * Note: install *gcc-wingw-w64* if it is not installed
 
@@ -43,7 +43,7 @@
 
 7) Transfer *filepermservice.exe* to windows victim machine:
 
-[![Image of transfer](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/transfer.png)](#)
+[![Image of transfer](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/transfer.png)](#)
 
 8) Copy *filepermservice.exe* to C:\Program Files\File Permissions Service:
 

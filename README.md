@@ -19,7 +19,7 @@
 
 * Note: if pyftpdlib is not installed do the following:
 
-[![Image of install](https://github.com/kam1n0/service-escalation-executable/blob/master/tmp_upload/install.png)](#)
+[![Image of install](https://github.com/kam1n0/service-escalation-registry/blob/master/tmp_upload/install.png)](#)
 
 4) Copy *windows_service.c* from windows machine:
 
